@@ -3,8 +3,8 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from Economia.Config.utils import extract
-from Economia.Config.url import url_ipca_meta, url_ipca_previsto, url_ipca_realizado
+from Config.utils import extract
+from Config.url import url_ipca_meta, url_ipca_previsto, url_ipca_realizado
 
 
 def get_ipca (ano):
@@ -49,8 +49,7 @@ def get_ipca (ano):
     ipca_realizado['data'] = pd.to_datetime(ipca_realizado['data'], format='%Y/%m/%d')
     ipca_realizado['valor'] = ipca_realizado['valor'].astype(float)
 
-    df = ipca_realizado
 
-    return df
+    return ipca_meta, ipca_previsto, ipca_realizado
 
 

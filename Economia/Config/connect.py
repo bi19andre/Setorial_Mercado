@@ -4,14 +4,14 @@ import msal
 
 # Credenciais SQL
 
-server = ''
-database = ''
+sql_server = ''
+sql_database = ''
 sql_username = ''
 sql_password = ''
 
 # Cadeias de conexão SQL
 
-conn = pyodbc.connect('DRIVER={SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + sql_username + ';PWD=' + sql_password)
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=' + sql_server + ';DATABASE=' + sql_database + ';UID=' + sql_username + ';PWD=' + sql_password)
 cursor = conn.cursor()
 
 

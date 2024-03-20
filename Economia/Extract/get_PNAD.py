@@ -1,14 +1,11 @@
 import pandas as pd 
-import re
 import requests
-from Config.sql import sql_desemprego
 from Config.url import url_pnad
 from Config.utils import transformar_em_data
+from Config.connect import conn
 
 
 def get_pnad ():
-
-    desemprego_iddata_list = list(sql_desemprego['iddata'].unique())
 
     response = requests.get(url_pnad)
     if response.status_code == 200:
@@ -48,6 +45,10 @@ def get_pnad ():
 
     base_desemprego['percentual'] = round(base_desemprego['valor2'] / base_desemprego['valor'], 3)
     base_desemprego = base_desemprego[['iddata', 'idibge', 'periodo', 'percentual']]
-    df = base_desemprego.loc[~base_desemprego['iddata'].isin(desemprego_iddata_list)].reset_index(drop=True).copy()
+
+    # Se a tabela setorial_f_desemprego já existe, eliminamos os dados já populados na base para evitar duplicidades.
+    # sql_desemprego = pd.read_sql("SELECT DISTINCT iddata FROM setorial_f_desemprego;", conn)
+    # desemprego_iddata_list = list(sql_desemprego['iddata'].unique())
+    # df = base_desemprego.loc[~base_desemprego['iddata'].isin(desemprego_iddata_list)].reset_index(drop=True).copy()
 
     return df

@@ -3,9 +3,8 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from Economia.Config.utils import extract
-from Config.sql import sqlIPCAmeta
-from Economia.Config.url import url_pib
+from Config.utils import extract
+from Config.url import url_pib
 
 def get_pib():
 

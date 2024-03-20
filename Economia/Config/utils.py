@@ -6,22 +6,12 @@ import requests
 import json
 import pandas as pd 
 
-from Economia.Config.connect import *
+from .connect import *
 
 
-
-def exporta_csv (df, path):
-    if not df.empty:
-        df.to_csv(path, sep=';', encoding='utf-8', index=False)
-        msg = f"{len(df)} linhas exportadas para o arquivo de saída csv"
-    else:
-        msg = "DataFrame vazio, exportação não realizada"
-    return msg
-
-
-def command_bcp (server, password, database, schema, table, path):
-    # Executa o comando bulk insert para população da base de dados em grande escala e menor tempo.    
-    bcp_string = f'bcp [{database}].[{schema}].[{table}] in "' + os.path.abspath(path) + '" -c -C 65001 -U "' + sql_username + '" -S tcp:sqlserverapoio.database.windows.net -P "' + sql_password + '" -F 2 -t ";"'  
+def command_bcp (database, schema, table, path):
+    # Executa o comando bulk insert para população da base de dados em grande escala e menor tempo.        
+    bcp_string = f'bcp [{database}].[{schema}].[{table}] in "' + os.path.abspath(path) + '" -c -C 65001 -U "' + sql_username + '" -S tcp:' + sql_server + ' -P "' + sql_password + '" -F 2 -t ";"'  
     process = subprocess.Popen(bcp_string, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output, _ = process.communicate()
     padrao = r'\n(\d+) linhas copiadas.'
