@@ -14,4 +14,4 @@ Como são diversas fontes diferentes, o trabalho exige mão de obra constante de
 
 Resultados:
 
-    No período de pandemia, nenhuma das escolas atendidads por nós fechou. A análise de mercado, associada ao expertise dos consultores contratados permitiu o acompanhamento adequado dos negócios em meio ao período de turbulência econômica no qual diversas escolas particulares tiveram sua atividade encerrada.
+No período de pandemia, nenhuma das escolas atendidads por nós fechou. A análise de mercado, associada ao expertise dos consultores contratados permitiu o acompanhamento adequado dos negócios em meio ao período de turbulência econômica no qual diversas escolas particulares tiveram sua atividade encerrada.
